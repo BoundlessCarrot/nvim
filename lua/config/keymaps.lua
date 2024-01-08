@@ -92,7 +92,7 @@ map('n', '<C-n>', ':w %:h/', opts)
 map('n', '<C-P>', ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
 -- easy commenting
-map('r', "<Leader>/", 'gcc', opts)
+map('n', "<Leader>/", 'gcc', opts)
 
 map("n", "<Leader>0", "<cmd>AerialToggle right<CR>")
 
