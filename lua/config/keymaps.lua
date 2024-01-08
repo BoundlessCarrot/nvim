@@ -67,7 +67,9 @@ map("n", "g#", "g#zz", opts)
 -- map("n", ";", "<cmd>Telescope resume<cr>", opts)
 
 -- search current buffer
-map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+map("n", "<C-s>", ":w<CR>", opts)
+map("n", "<C-S>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+
 
 -- search modified files
 map("n", "<Leader>m", ":Telescope git_status<CR>", opts)
