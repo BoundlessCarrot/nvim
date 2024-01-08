@@ -67,7 +67,9 @@ map("n", "g#", "g#zz", opts)
 -- map("n", ";", "<cmd>Telescope resume<cr>", opts)
 
 -- search current buffer
-map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+map("n", "<C-s>", ":w<CR>", opts)
+map("n", "<C-S>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+
 
 -- search modified files
 map("n", "<Leader>m", ":Telescope git_status<CR>", opts)
@@ -87,10 +89,11 @@ map("n", "<C-n>", ":w %:h/", opts)
 -- delete backward
 -- w{number}db
 
-map("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
+map('n', '<C-P>', ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
-map("n", "<Esc>", ":nohlsearch<CR>", opts)
+-- easy commenting
+map('r', "<Leader>/", 'gcc', opts)
 
--- ctrl + x to cut full line
-map("n", "<C-x>", "dd", opts)
+map("n", "<Leader>0", "<cmd>AerialToggle right<CR>")
 
+map('n', "<Leader>gg", ":LazyGit<CR>")
