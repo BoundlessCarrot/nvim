@@ -4,7 +4,8 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
-    "nvim-neotest/neotest-go"
+    "nvim-neotest/neotest-go",
+    "olimorris/neotest-rspec"
   },
   keys = {
     { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
@@ -57,6 +58,7 @@ return {
       -- your neotest config here
       adapters = {
         require("neotest-go"),
+        require("neotest-rspec")
       },
       -- status = {virtual_text = true}
       output = { open_on_run = true },
