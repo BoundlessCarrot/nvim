@@ -5,6 +5,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-neotest/neotest-go",
+    "olimorris/neotest-rspec"
   },
   keys = {
     {
@@ -75,6 +76,7 @@ return {
       -- your neotest config here
       adapters = {
         require("neotest-go"),
+        require("neotest-rspec")
       },
       icons = {
         child_indent = "│",
