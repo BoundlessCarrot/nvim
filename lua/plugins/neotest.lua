@@ -75,6 +75,7 @@ return {
       -- your neotest config here
       adapters = {
         require("neotest-go"),
+        require("neotest-rspec")
       },
       icons = {
         child_indent = "│",
