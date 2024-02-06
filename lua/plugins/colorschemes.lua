@@ -376,4 +376,5 @@ return {
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
+  {"LunarVim/lunar.nvim"},
 }
