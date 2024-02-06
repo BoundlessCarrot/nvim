@@ -148,7 +148,9 @@ return {
   t = {
     name = "+Tests",
   },
-  x = {
-    name = "+Trouble",
-  }
+  c = {
+    name = "Harpoon",
+    -- a = {function() harpoon:list():append() end, "Append to list"},
+    -- e = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Quick Menu"},
+  },
 }
