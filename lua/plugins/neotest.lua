@@ -5,7 +5,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-neotest/neotest-go",
-    "olimorris/neotest-rspec"
+    "olimorris/neotest-rspec",
+    "nvim-neotest/nvim-nio"
   },
   keys = {
     {
