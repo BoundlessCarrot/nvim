@@ -5,7 +5,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-neotest/neotest-go",
-    "olimorris/neotest-rspec"
+    "olimorris/neotest-rspec",
+    "nvim-neotest/nvim-nio"
   },
   keys = {
     { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
