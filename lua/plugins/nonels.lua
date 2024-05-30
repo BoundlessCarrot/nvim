@@ -21,14 +21,14 @@ return {
         ensure_installed = {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
-          "eslint_d", -- js linter
+          -- "eslint_d", -- js linter
           -- "golangci_lint", -- go linter
           "terraform_fmt", -- terraform formatter
           "terraform_validate", -- terraform linter
           "shellcheck", -- shell linter
           "yamllint", -- yaml linter
           "buf", -- buf formatter
-          "shfmt", -- shell formatter
+          "beautysh", -- shell formatter
           -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
           -- "spell", -- spell checker
@@ -56,7 +56,7 @@ return {
           formatting.black,
 
           -- diagnostics.eslint_d,
-          -- diagnosticsueslint_d.with({ -- js/ts linter
+          -- diagnostics.eslint_d.with({ -- js/ts linter
           --   condition = function(utils)
           --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
           --   end,

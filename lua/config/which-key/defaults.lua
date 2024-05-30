@@ -46,7 +46,7 @@ return {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { require("telescope.builtin").git_status, "Open changed file" },
+    -- o = { require("telescope.builtin").git_status, "Open changed file" },
     b = { require("telescope.builtin").git_branches, "Checkout branch" },
     c = { require("telescope.builtin").git_commits, "Checkout commit" },
     C = {
@@ -58,6 +58,8 @@ return {
       "Git Diff",
     },
     U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
+    f = { ":Easypick changed_files<CR>", "Show changed files" },
+    F = { ":Easypick conflicts<CR>", "Show possible conflicts" },
   },
   l = {
     name = "+LSP",
@@ -71,20 +73,9 @@ return {
     -- l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
     -- L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
-    -- t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
-    c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
-
-    W = {
-      name = "+Workspace",
-      a = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
-      r = { vim.lsp.buf.remove_workspace_folder, "Remove Folder" },
-      l = {
-        function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end,
-        "List Folders",
-      },
-    },
+    t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
+    c = { require("config.utils").copyFilePath, "Copy File Path" },
+    C = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
   },
   s = {
     name = "+Search",
@@ -148,9 +139,16 @@ return {
   t = {
     name = "+Tests",
   },
-  c = {
-    name = "Harpoon",
-    -- a = {function() harpoon:list():append() end, "Append to list"},
-    -- e = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Quick Menu"},
-  },
+  -- c = {
+  --   name = "Harpoon",
+  --   -- a = {function() harpoon:list():append() end, "Append to list"},
+  --   -- e = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Quick Menu"},
+  -- },
+  C = {
+    name = "Calltree",
+    o = { require('litee.calltree').open_to(), "Open calltree to current line" },
+    p = { require('litee.calltree').navigation('p'), "Previous symbol" },
+    n = { require("litee.calltree").navigation('n'), "Next symbol" },
+    c = { require('litee.calltree').hide_calltree(), "Close navigation panel" },
+  }
 }
