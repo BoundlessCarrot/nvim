@@ -43,7 +43,7 @@ return {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { require("telescope.builtin").git_status, "Open changed file" },
+    -- o = { require("telescope.builtin").git_status, "Open changed file" },
     b = { require("telescope.builtin").git_branches, "Checkout branch" },
     c = { require("telescope.builtin").git_commits, "Checkout commit" },
     C = {
@@ -55,6 +55,8 @@ return {
       "Git Diff",
     },
     U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
+    f = { ":Easypick changed_files<CR>", "Show changed files" },
+    F = { ":Easypick conflicts<CR>", "Show possible conflicts" },
   },
   l = {
     name = "+LSP",
@@ -68,7 +70,8 @@ return {
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
     w = { require("telescope.builtin").diagnostics, "Diagnostics" },
     t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
-    c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
+    c = { require("config.utils").copyFilePath, "Copy File Path" },
+    C = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
   },
   s = {
     name = "+Search",
@@ -120,9 +123,16 @@ return {
   t = {
     name = "+Tests",
   },
-  c = {
-    name = "Harpoon",
-    -- a = {function() harpoon:list():append() end, "Append to list"},
-    -- e = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Quick Menu"},
-  },
+  -- c = {
+  --   name = "Harpoon",
+  --   -- a = {function() harpoon:list():append() end, "Append to list"},
+  --   -- e = {function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle Quick Menu"},
+  -- },
+  C = {
+    name = "Calltree",
+    o = { require('litee.calltree').open_to(), "Open calltree to current line" },
+    p = { require('litee.calltree').navigation('p'), "Previous symbol" },
+    n = { require("litee.calltree").navigation('n'), "Next symbol" },
+    c = { require('litee.calltree').hide_calltree(), "Close navigation panel" },
+  }
 }
