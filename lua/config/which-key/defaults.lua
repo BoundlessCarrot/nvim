@@ -46,7 +46,7 @@ return {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { require("telescope.builtin").git_status, "Open changed file" },
+    -- o = { require("telescope.builtin").git_status, "Open changed file" },
     b = { require("telescope.builtin").git_branches, "Checkout branch" },
     c = { require("telescope.builtin").git_commits, "Checkout commit" },
     C = {
@@ -58,6 +58,8 @@ return {
       "Git Diff",
     },
     U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
+    f = { ":Easypick changed_files<CR>", "Show changed files" },
+    F = { ":Easypick conflicts<CR>", "Show possible conflicts" },
   },
   l = {
     name = "+LSP",
