@@ -7,6 +7,7 @@ return {
     { "j-hui/fidget.nvim",       opts = {} },
     { "b0o/schemastore.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
+    -- { "nvimdev/lspsaga.nvim" },
   },
   config = function()
     require("mason").setup({
