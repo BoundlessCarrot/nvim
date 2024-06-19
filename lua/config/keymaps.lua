@@ -97,6 +97,6 @@ map('n', "<Space>/", 'gcc', { noremap = true, silent = false, desc = "Comment li
 
 map("n", "<Leader>0", "<cmd>AerialToggle right<CR>")
 
-map('n', "<Space>gg", ":LazyGit<CR>", { noremap = true, silent = false, desc = "Open LazyGit" })
+-- map('n', "<Space>gg", ":LazyGit<CR>", { noremap = true, silent = false, desc = "Open LazyGit" })
 map('n', 'yp', ':let @+=@%<CR>', { noremap = true, silent = false, desc = "Yank path" })
 map('n', 'ya', ':%y+<CR>', { noremap = true, silent = false, desc = "Yank all" })
