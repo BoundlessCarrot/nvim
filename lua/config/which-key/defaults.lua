@@ -57,6 +57,8 @@ return {
     U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
     f = { ":Easypick changed_files<CR>", "Show changed files" },
     F = { ":Easypick conflicts<CR>", "Show possible conflicts" },
+    -- i = { ":Easypick interactive_rebase<CR>", "Start an interactive rebase" },
+    i = { require("config.utils").interactiveRebase, "Start an interactive rebase" },
   },
   l = {
     name = "+LSP",

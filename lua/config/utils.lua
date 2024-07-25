@@ -109,4 +109,92 @@ M.copyFilePath = function()
   end
 end
 
+M.interactiveRebase = function()
+  local get_default_branch = "git rev-parse --symbolic-full-name refs/remotes/origin/HEAD | sed 's!.*/!!'"
+  local base_branch = vim.fn.system(get_default_branch) or "main"
+
+  vim.fn.system("git fetch origin " .. base_branch .. ":" .. base_branch)
+  vim.cmd(":Git rebase -i " .. base_branch)
+  M.checkRebaseStatus()
+end
+
+-- M.interactiveRebase = function()
+--   local get_default_branch = "git rev-parse --symbolic-full-name refs/remotes/origin/HEAD | sed 's!.*/!!'"
+--   local base_branch = vim.fn.system(get_default_branch):gsub("%s+", "") or "main"
+--
+--   vim.fn.system("git fetch origin " .. base_branch .. ":" .. base_branch)
+--   local rebase_buf = nil
+--   local stdout_data = {}
+--
+--   vim.fn.jobstart("git rebase -i " .. base_branch, {
+--     on_stdout = function(_, data)
+--       if data then
+--         for _, line in ipairs(data) do
+--           if line ~= "" then
+--             table.insert(stdout_data, line)
+--           end
+--         end
+--       end
+--     end,
+--     on_stderr = function(_, data)
+--       if data and #data > 0 then
+--         print("Rebase error: " .. table.concat(data, "\n"))
+--       end
+--     end,
+--     on_exit = function(_, exit_code)
+--       if exit_code == 0 and #stdout_data > 0 then
+--         -- Create a new buffer for the rebase
+--         rebase_buf = vim.api.nvim_create_buf(false, true)
+--         vim.api.nvim_buf_set_lines(rebase_buf, 0, -1, false, stdout_data)
+--         vim.api.nvim_set_current_buf(rebase_buf)
+--         vim.bo[rebase_buf].filetype = 'gitrebase'
+--         vim.cmd('setlocal nomodified')
+--
+--         -- Set up autocmd to check for buffer write
+--         vim.cmd([[
+--           augroup RebaseComplete
+--           autocmd!
+--           autocmd BufWritePost <buffer> lua require('git_utils').checkRebaseStatus(]] .. rebase_buf .. [[)
+--           augroup END
+--         ]])
+--       else
+--         print("Failed to start rebase. Please check your git status.")
+--         vim.fn.system("git rebase --abort")
+--       end
+--     end
+--   })
+-- end
+
+M.checkRebaseStatus = function()
+  local rebase_status = vim.fn.system("git rebase --show-current-patch"):gsub("%s+", "")
+
+  if rebase_status == "" then
+    -- Rebase is complete, clean up
+    -- vim.cmd("autocmd! RebaseComplete")
+    -- vim.api.nvim_buf_delete(buf, { force = true })
+
+    -- Show the confirmation dialog
+    M.showForcePushDialog()
+  end
+end
+
+M.showForcePushDialog = function()
+  vim.ui.select(
+    { "Yes", "No" },
+    { prompt = "Force push rebased changes?" },
+    function(choice)
+      if choice == "Yes" then
+        local push_output = vim.fn.system("git push --force")
+        if vim.v.shell_error == 0 then
+          print("Changes force pushed successfully.")
+        else
+          print("Force push failed: " .. push_output)
+        end
+      else
+        print("Force push cancelled.")
+      end
+    end
+  )
+end
+
 return M
