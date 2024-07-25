@@ -78,6 +78,8 @@ vim.keymap.set("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> norm
 
 -- Select all
 vim.keymap.set("n", "<C-a>", "ggVG", opts)
+vim.keymap.set('n', 'yp', ':let @+=@%<CR>', { noremap = true, silent = false, desc = "Yank path" })
+vim.keymap.set('n', 'ya', ':%y+<CR>', { noremap = true, silent = false, desc = "Yank all" })
 
 -- write file in current directory
 -- :w %:h/<new-file-name>
