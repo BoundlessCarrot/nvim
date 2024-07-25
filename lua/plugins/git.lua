@@ -81,78 +81,96 @@ return {
     end,
     keys = {
       {
-        "<leader>Gk",
+        "<leader>gk",
         function()
           require("gitsigns").prev_hunk({ navigation_message = false })
         end,
         desc = "Prev Hunk"
       },
       {
-        "<leader>Gl", function()
+        "<leader>gl", function()
           require("gitsigns").blame_line()
         end,
         desc = "Blame"
       },
       {
-        "<leader>Gp", function()
+        "<leader>gp", function()
           require("gitsigns").preview_hunk()
         end,
         desc = "Preview Hunk"
       },
       {
-        "<leader>Gr", function()
+        "<leader>gr", function()
           require("gitsigns").reset_hunk()
         end,
         desc = "Reset Hunk"
       },
       {
-        "<leader>GR", function()
+        "<leader>gR", function()
           require("gitsigns").reset_buffer()
         end,
         desc = "Reset Buffer"
       },
       {
-        "<leader>Gj", function()
+        "<leader>gj", function()
           require("gitsigns").next_hunk({ navigation_message = false })
         end,
         desc = "Next Hunk"
       },
       {
-        "<leader>Gs", function()
+        "<leader>gs", function()
           require("gitsigns").stage_hunk()
         end,
         desc = "Stage Hunk"
       },
       {
-        "<leader>Gu", function()
+        "<leader>gu", function()
           require("gitsigns").undo_stage_hunk()
         end,
         desc = "Undo Stage Hunk"
       },
       {
-        "<leader>Go", require("telescope.builtin").git_status,
+        "<leader>go", require("telescope.builtin").git_status,
         desc = "Open changed file"
       },
       {
-        "<leader>Gb", require("telescope.builtin").git_branches,
+        "<leader>gS", require("telescope.builtin").git_stash,
+        desc = "Stash"
+      },
+      {
+        "<leader>gP", require("telescope.builtin").git_patches,
+        desc = "Patches"
+      },
+      {
+        "<leader>gB", require("telescope.builtin").git_bcommits,
+        desc = "Commits(for current file)"
+      },
+        "<leader>gb", require("telescope.builtin").git_branches,
         desc = "Checkout branch"
       },
       {
-        "<leader>Gc", require("telescope.builtin").git_commits,
+        "<leader>gc", require("telescope.builtin").git_commits,
         desc = "Checkout commit"
       },
       {
-        "<leader>GC", require("telescope.builtin").git_bcommits,
+        "<leader>gC", require("telescope.builtin").git_bcommits,
         desc = "Checkout commit(for current file)"
       },
       {
-        "<leader>Gd", function()
+        "<leader>gd", function()
           vim.cmd("Gitsigns diffthis HEAD")
         end,
         desc = "Git Diff HEAD"
       },
+      {
+        "<leader>gg", function() vim.cmd("lazygit") end,
+        desc = "LazyGit"
+      },
+      {
+        "<leader>gf", function() vim.cmd("Easypick changed_files") end,
+        desc = "Show changed files"
+      },
     },
-  },
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
@@ -167,10 +185,10 @@ return {
     "mbbill/undotree",
     keys = {
       {
-        "<leader>GU",
+        "<leader>gU",
         ":UndotreeToggle<CR>",
         desc = "Toggle UndoTree"
       },
     }
-  },
+  }
 }
