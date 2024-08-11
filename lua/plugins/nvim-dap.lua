@@ -15,7 +15,8 @@ return {
 
         dap.adapters.lldb = {
             type = 'executable',
-            command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
+            -- command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
+            command = '/usr/bin/lldb-dap', -- adjust as needed, must be absolute path
             name = 'lldb'
         }
 
@@ -39,6 +40,53 @@ return {
         dap.configurations.rust = {
             lldb
         }
+
+        -- dap.configurations.zig = {
+        --     {
+        --         name = "Launch",
+        --         type = "lldb",
+        --         request = "launch",
+        --         program = function()
+        --             return vim.fn.input(
+        --                 "Path to executable: ",
+        --                 vim.fn.getcwd() .. "/",
+        --                 "file"
+        --             )
+        --         end,
+        --         cwd = "${workspaceFolder}",
+        --         stopOnEntry = false,
+        --         args = {},
+        --         -- runInTerminal = false,
+        --     },
+        -- }
+
+        dap.configurations.c = {
+            {
+                name = 'Launch',
+                type = 'lldb',
+                request = 'launch',
+                program = function()
+                    return vim.fn.input(
+                        'Path to executable: ',
+                        vim.fn.getcwd() .. '/',
+                        'file'
+                    )
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+                args = {},
+                runInTerminal = false,
+            },
+            {
+                name = 'Attach to process',
+                type = 'lldb',
+                request = 'attach',
+                pid = require('dap.utils').pick_process,
+                args = {},
+            },
+        }
+
+        dap.configurations.zig = dap.configurations.c
 
         dapui.setup()
         virtual_text.setup()

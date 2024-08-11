@@ -5,38 +5,53 @@ return {
     config = function()
       local icons = require('config.icons')
       require("gitsigns").setup {
-        signs = {
-          add = {
-            hl = "GitSignsAdd",
-            text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsAddNr",
-            linehl = "GitSignsAddLn",
-          },
-          change = {
-            hl = "GitSignsChange",
-            text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
-          },
-          delete = {
-            hl = "GitSignsDelete",
-            text = icons.ui.TriangleShortArrowRight,
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          topdelete = {
-            hl = "GitSignsDelete",
-            text = icons.ui.TriangleShortArrowRight,
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          changedelete = {
-            hl = "GitSignsChange",
-            text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
-          },
-        },
+        vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitSignsAdd' }),
+        vim.api.nvim_set_hl(0, 'GitSignsAddLn', { link = 'GitSignsAddLn' }),
+        vim.api.nvim_set_hl(0, 'GitSignsAddNr', { link = 'GitSignsAddNr' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'GitSignsChange' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChangeLn', { link = 'GitSignsChangeLn' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChangeNr', { link = 'GitSignsChangeNr' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { link = 'GitSignsChange' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChangedeleteLn', { link = 'GitSignsChangeLn' }),
+        vim.api.nvim_set_hl(0, 'GitSignsChangedeleteNr', { link = 'GitSignsChangeNr' }),
+        vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'GitSignsDelete' }),
+        vim.api.nvim_set_hl(0, 'GitSignsDeleteLn', { link = 'GitSignsDeleteLn' }),
+        vim.api.nvim_set_hl(0, 'GitSignsDeleteNr', { link = 'GitSignsDeleteNr' }),
+        vim.api.nvim_set_hl(0, 'GitSignsTopdelete', { link = 'GitSignsDelete' }),
+        vim.api.nvim_set_hl(0, 'GitSignsTopdeleteLn', { link = 'GitSignsDeleteLn' }),
+        vim.api.nvim_set_hl(0, 'GitSignsTopdeleteNr', { link = 'GitSignsDeleteNr' }),
+        -- signs = {
+        --   add = {
+        --     hl = "GitSignsAdd",
+        --     text = icons.ui.BoldLineLeft,
+        --     numhl = "GitSignsAddNr",
+        --     linehl = "GitSignsAddLn",
+        --   },
+        --   change = {
+        --     hl = "GitSignsChange",
+        --     text = icons.ui.BoldLineLeft,
+        --     numhl = "GitSignsChangeNr",
+        --     linehl = "GitSignsChangeLn",
+        --   },
+        --   delete = {
+        --     hl = "GitSignsDelete",
+        --     text = icons.ui.TriangleShortArrowRight,
+        --     numhl = "GitSignsDeleteNr",
+        --     linehl = "GitSignsDeleteLn",
+        --   },
+        --   topdelete = {
+        --     hl = "GitSignsDelete",
+        --     text = icons.ui.TriangleShortArrowRight,
+        --     numhl = "GitSignsDeleteNr",
+        --     linehl = "GitSignsDeleteLn",
+        --   },
+        --   changedelete = {
+        --     hl = "GitSignsChange",
+        --     text = icons.ui.BoldLineLeft,
+        --     numhl = "GitSignsChangeNr",
+        --     linehl = "GitSignsChangeLn",
+        --   },
+        -- },
         signcolumn = true,
         numhl = false,
         linehl = false,
@@ -65,7 +80,6 @@ return {
           row = 0,
           col = 1,
         },
-        yadm = { enable = false },
 
         on_attach = function(bufnr)
           vim.keymap.set('n', '<leader>H', require('gitsigns').preview_hunk,
