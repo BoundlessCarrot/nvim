@@ -40,4 +40,8 @@ return {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml" },
   },
+  clangd = {
+    cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+  },
 }
