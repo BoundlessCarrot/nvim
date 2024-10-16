@@ -3,16 +3,17 @@ return {
   requires = 'nvim-telescope/telescope.nvim',
   config = function()
     local easypick = require("easypick")
+    local oth_previewers = require("telescope.previewers")
 
     -- only required for the example to work
     local get_default_branch = "git rev-parse --symbolic-full-name refs/remotes/origin/HEAD | sed 's!.*/!!'"
     local base_branch = vim.fn.system(get_default_branch) or "main"
     easypick.setup({
       pickers = {
-		-- add your custom pickers here
-		-- below you can find some examples of what those can look like
+	-- add your custom pickers here
+	-- below you can find some examples of what those can look like
 
-		-- list files inside current folder with default previewer
+	-- list files inside current folder with default previewer
 		{
 			-- name for your custom picker, that can be invoked using :Easypick <name> (supports tab completion)
 			name = "ls",
@@ -34,6 +35,18 @@ return {
 			name = "conflicts",
 			command = "git diff --name-only --diff-filter=U --relative",
 			previewer = easypick.previewers.file_diff()
+		},
+
+		-- show the last GitHub CI/CD run for the current repo/branch
+		{
+			name = "actions_runs",
+			command = "gh pr checks",
+			previewer = require('telescope.previewers').new_buffer_previewer({
+				define_preview = function(self, entry, status)
+					local bufnr = self.state.bufnr
+					vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { entry.value })
+				end
+			})
 		},
 	}
     })

@@ -98,17 +98,31 @@ return {
     end,
   },
 
-  -- Lorem Ipsum generator for Neovim
+  -- markdown viewer
   {
-    "derektata/lorem.nvim",
-    config = function()
-      local lorem = require("lorem")
-      lorem.setup({
-        sentenceLength = "mixedShort",
-        comma = 1,
-      })
-    end,
+    -- Make sure to set this up properly if you have lazy=true
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {
+      file_types = { "markdown" },
+    },
+    ft = { "markdown" },
   },
+
+  -- {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+
+  {"lnc3l0t/glow.nvim", config = true, cmd = "Glow"},
+
+  -- -- Lorem Ipsum generator for Neovim
+  -- {
+  --   "derektata/lorem.nvim",
+  --   config = function()
+  --     local lorem = require("lorem")
+  --     lorem.setup({
+  --       sentenceLength = "mixedShort",
+  --       comma = 1,
+  --     })
+  --   end,
+  -- },
 
   -- Indent guide for Neovim
   {
