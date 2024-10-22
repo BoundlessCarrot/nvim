@@ -104,6 +104,7 @@ return {
   },
   T = {
     name = "+Todo",
+    e = { "<cmd>OpenTodoSidebar<cr>", "Edit Todo Sidebar" },
     t = { "<cmd>TodoTelescope<cr>", "Todo" },
     T = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", "Todo/Fix/Fixme" },
     x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },

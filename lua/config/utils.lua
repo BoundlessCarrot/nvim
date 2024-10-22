@@ -197,4 +197,18 @@ M.showForcePushDialog = function()
   )
 end
 
+M.openTodoSidebar = function()
+  -- Save the current buffer number
+  -- local current_buf = vim.api.nvim_get_current_buf()
+
+  -- Create a new vertical split on the right
+  vim.cmd('botright vsplit ~/TODO.md')
+
+  -- Set the width of the new split to 55 columns
+  vim.cmd('vertical resize 55')
+end
+
+-- Create a user command to call the function
+vim.api.nvim_create_user_command('OpenTodoSidebar', M.openTodoSidebar, {})
+
 return M
