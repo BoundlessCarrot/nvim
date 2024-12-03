@@ -11,7 +11,6 @@ return {
         local dap = require("dap")
         local dapui = require("dapui")
         local virtual_text = require("nvim-dap-virtual-text")
-        local dap_go = require("dap-go")
 
         dap.adapters.lldb = {
             type = 'executable',
@@ -90,6 +89,5 @@ return {
 
         dapui.setup()
         virtual_text.setup()
-        dap_go.setup()
     end
 }

@@ -202,7 +202,7 @@ M.openTodoSidebar = function()
   -- local current_buf = vim.api.nvim_get_current_buf()
 
   -- Create a new vertical split on the right
-  vim.cmd('botright vsplit ~/TODO.md')
+  vim.cmd('botright vsplit ~/TODO.md | setlocal nonumber norelativenumber')
 
   -- Set the width of the new split to 55 columns
   vim.cmd('vertical resize 55')

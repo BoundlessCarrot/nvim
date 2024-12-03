@@ -12,6 +12,12 @@ return {
       "telescope-dap.nvim",
       "kkharji/sqlite.lua",
       "nvim-telescope/telescope-frecency.nvim",
+      -- {
+      --   "nvim-telescope/telescope-live-grep-args.nvim" ,
+      --   -- This will not install any breaking changes.
+      --   -- For major updates, this must be adjusted manually.
+      --   version = "^1.0.0",
+      -- },
     },
     config = function()
       local telescope = require("telescope")
@@ -180,6 +186,7 @@ return {
       telescope.load_extension("refactoring")
       telescope.load_extension("dap")
       telescope.load_extension("frecency")
+      -- telescope.load_extension("live_grep_args")
     end,
   },
 }
